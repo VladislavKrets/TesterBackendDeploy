@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -103,17 +103,15 @@ WSGI_APPLICATION = 'Tester.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'tester',
-        # 'USER': 'tester',
-        # 'PASSWORD': 'password',
-        # 'HOST': '127.0.0.1',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase', # This is where you put the name of the db file.
+                 # If one doesn't exist, it will be created at migration time.
 
-        'NAME': 'd7e42jef0v5rsj',
-        'USER': 'yzksnqbjddvweb',
-        'PASSWORD': '85450656b0c732e0d709a579e7c6cd97bbb099c2ac895ce941843ffdc8bc361c',
-        'HOST': 'ec2-52-202-22-140.compute-1.amazonaws.com',
-        'PORT': '5432',
+        #'NAME': 'd7e42jef0v5rsj',
+        #'USER': 'yzksnqbjddvweb',
+        #'PASSWORD': '85450656b0c732e0d709a579e7c6cd97bbb099c2ac895ce941843ffdc8bc361c',
+        #'HOST': 'ec2-52-202-22-140.compute-1.amazonaws.com',
+        #'PORT': '5432',
     }
 }
 
@@ -152,4 +150,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
