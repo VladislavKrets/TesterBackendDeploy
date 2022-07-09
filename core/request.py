@@ -31,8 +31,8 @@ def main(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME):
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    if os.path.exists('../token.json'):
+        creds = Credentials.from_authorized_user_file('../token.json', SCOPES)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -42,7 +42,7 @@ def main(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME):
                 'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('token.json', 'w') as token:
+        with open('../token.json', 'w') as token:
             token.write(creds.to_json())
 
     service = build('sheets', 'v4', credentials=creds)
@@ -68,7 +68,7 @@ def main(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME):
                 currentQuestion = Question(text=row['values'][0]['userEnteredValue']['stringValue'], answers=[])
             if len(row['values']) > 1 and 'userEnteredValue' in row['values'][1]:
                 color = row['values'][1]['effectiveFormat']['textFormat']['foregroundColor']
-                print(row['values'][1]['userEnteredValue'].keys())
+                print(row['values'][1]['userEnteredValue'])
                 answer_value = row['values'][1]['userEnteredValue']['stringValue'] if 'stringValue' in row['values'][1][
                     'userEnteredValue'] else row['values'][1]['userEnteredValue']['numberValue'] if 'numberValue' in \
                                                                                                     row['values'][1][
@@ -89,7 +89,7 @@ def main(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME):
                 questions[i].question_type = 'radio'
         return questions
 #try:
-#main('1_RE_hQiCXJsZVK1SuYBZV84dsszCDxXjVgIjMTPiHis', 'ТП!B1:C100')
+#main('1f8PXFOSG-hT6dbncYLvupvqolYEpjJS4n_Hkfyh6yXk', 'ИСТМ 2020!A1:C1215')
 #except:
     #pass
 
