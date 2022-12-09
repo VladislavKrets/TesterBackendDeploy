@@ -101,7 +101,6 @@ WSGI_APPLICATION = 'Tester.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'tester',
@@ -110,7 +109,6 @@ DATABASES = {
             'HOST': 'localhost',
             'PORT': '',
         }
-    }
 }
 
 # Password validation
